@@ -1773,3 +1773,110 @@ section {
     margin-top: 24px !important;
   }
 }
+/* ================================
+   HOMEPAGE MOBILE FINAL SPACING
+   ================================ */
+
+@media (max-width: 800px) {
+
+  /* HERO — prevent headline from being cut */
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    min-height: 680px !important;
+    padding: 90px 20px 70px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+  }
+
+  .hero h1 {
+    position: relative !important;
+    z-index: 5 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-copy {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 20px !important;
+  }
+
+  .hero-actions {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 22px !important;
+  }
+
+  .hero-scroll {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 18px !important;
+    z-index: 5 !important;
+  }
+
+  /* CATEGORY SECTION */
+  .categories {
+    padding-top: 55px !important;
+    margin-top: 35px !important;
+  }
+
+  .categories-header {
+    margin-bottom: 35px !important;
+  }
+
+  /* NEW ARRIVALS */
+  .new-arrivals,
+  .new-arrivals-section {
+    padding-top: 55px !important;
+    margin-top: 35px !important;
+  }
+
+  .section-header {
+    margin-bottom: 30px !important;
+  }
+
+  /* GENERAL SECTION SEPARATION */
+  section {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .hero {
+    min-height: 700px !important;
+    padding: 100px 16px 65px !important;
+  }
+
+  .hero h1 {
+    font-size: 52px !important;
+    line-height: 0.92 !important;
+  }
+
+  .hero-copy {
+    margin-top: 18px !important;
+  }
+
+  .categories {
+    padding-top: 60px !important;
+    margin-top: 45px !important;
+  }
+
+  .categories-header {
+    margin-bottom: 38px !important;
+  }
+
+  .new-arrivals,
+  .new-arrivals-section {
+    padding-top: 60px !important;
+    margin-top: 45px !important;
+  }
+
+  .section-header {
+    margin-bottom: 35px !important;
+  }
+}
