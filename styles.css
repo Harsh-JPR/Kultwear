@@ -1538,3 +1538,238 @@ section {
     margin-top: 24px;
   }
 }
+/* =========================================================
+   KULTWEAR — FINAL RESPONSIVE HOMEPAGE FIX
+   ========================================================= */
+
+/* ---------- HEADER / NAV ---------- */
+
+.site-header {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+
+
+/* ---------- DESKTOP HERO ---------- */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 110px);
+  overflow: hidden;
+}
+
+.hero h1,
+.hero-copy,
+.hero-actions {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-mark {
+  position: absolute;
+  top: 50%;
+  right: 7vw;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-size: clamp(120px, 22vw, 360px);
+  line-height: 0.7;
+  font-weight: 900;
+  letter-spacing: -25px;
+  color: #151515;
+  pointer-events: none;
+}
+
+.hero-scroll {
+  position: absolute;
+  right: 5vw;
+  bottom: 35px;
+  z-index: 3;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* ---------- FOOTER / LEGAL SPACING ---------- */
+
+.footer {
+  padding-bottom: 60px;
+}
+
+.footer-grid,
+.footer-links {
+  row-gap: 28px;
+}
+
+.footer-grid > *,
+.footer-links > * {
+  margin-bottom: 18px;
+}
+
+.footer a {
+  display: block;
+  margin-bottom: 14px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 800px) {
+
+  .site-header {
+    height: 64px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .brand {
+    font-size: 18px !important;
+    white-space: nowrap;
+  }
+
+  .main-nav {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-left: auto !important;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle {
+    display: flex !important;
+  }
+
+  .hero {
+    min-height: calc(100vh - 92px) !important;
+    margin-top: 0 !important;
+    overflow: hidden;
+  }
+
+  .hero-mark {
+    top: 30%;
+    right: -25px;
+    transform: translateY(-50%);
+    font-size: 150px;
+    letter-spacing: -12px;
+  }
+
+  .hero h1 {
+    font-size: 64px;
+    letter-spacing: -4px;
+    line-height: 0.9;
+  }
+
+  .hero-copy {
+    max-width: 300px;
+  }
+
+  .hero-actions {
+    margin-top: 25px;
+  }
+
+  .hero-scroll {
+    left: 20px;
+    right: auto;
+    bottom: 18px;
+  }
+
+  /* FAQ / CONTACT / LEGAL sections */
+
+  .footer {
+    padding: 45px 20px 70px !important;
+  }
+
+  .footer-grid,
+  .footer-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  .footer-grid > *,
+  .footer-links > * {
+    margin-bottom: 0 !important;
+    padding-bottom: 22px !important;
+    margin-top: 22px !important;
+    border-bottom: 1px solid #242424;
+  }
+
+  .footer a {
+    margin-bottom: 18px !important;
+    line-height: 1.4;
+  }
+
+  .footer-grid > *:first-child,
+  .footer-links > *:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 500px) {
+
+  .site-header {
+    height: 60px !important;
+    padding: 0 14px !important;
+  }
+
+  .brand {
+    font-size: 17px !important;
+  }
+
+  .header-actions {
+    gap: 10px !important;
+  }
+
+  .hero {
+    min-height: calc(100vh - 88px) !important;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+  .footer {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .footer-grid > *,
+  .footer-links > * {
+    padding-bottom: 24px !important;
+    margin-top: 24px !important;
+  }
+}
