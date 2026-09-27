@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KULTWEAR — Product Details">
+  <title>KULTWEAR — Product</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="announcement">
+    WINTER '26 — COMING SOON
+  </div>
+
+  <header class="site-header">
+    <a href="index.html" class="brand">KULTWEAR</a>
+
+    <nav class="main-nav">
+      <a href="collection.html">Collection</a>
+      <a href="index.html#new">New Arrivals</a>
+      <a href="limited-edition.html">Limited Edition</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchBtn">Search</button>
+      <button class="icon-btn" id="accountBtn">Account</button>
+      <button class="icon-btn" id="bagBtn">Bag</button>
+      <button class="icon-btn" id="menuBtn">Menu</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="product-detail-section">
+      <div id="productDetail"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+
+    <div class="footer-brand">
+      <div class="footer-logo">KULTWEAR</div>
+      <p>WINTER '26</p>
+    </div>
+
+    <div class="footer-links">
+
+      <div>
+        <h4>SUPPORT</h4>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div>
+        <h4>LEGAL</h4>
+        <a href="index.html#privacy">Privacy Policy</a>
+        <a href="index.html#terms">Terms & Conditions</a>
+        <a href="index.html#shipping">Shipping Policy</a>
+        <a href="index.html#returns">Return & Refund Policy</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 KULTWEAR</span>
+      <span>ALL RIGHTS RESERVED.</span>
+    </div>
+
+  </footer>
+
+  <div class="drawer" id="searchDrawer">
+
+    <div class="drawer-header">
+      <h3>SEARCH</h3>
+      <button class="drawer-close" data-close="searchDrawer">×</button>
+    </div>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search products..."
+      autocomplete="off"
+    >
+
+    <div id="searchResults"></div>
+
+  </div>
+
+  <div class="drawer" id="accountDrawer">
+
+    <div class="drawer-header">
+      <h3>ACCOUNT</h3>
+      <button class="drawer-close" data-close="accountDrawer">×</button>
+    </div>
+
+    <p>Account access will be available before launch.</p>
+
+    <button class="drawer-btn">
+      CONTINUE
+    </button>
+
+  </div>
+
+  <div class="drawer" id="bagDrawer">
+
+    <div class="drawer-header">
+      <h3>BAG</h3>
+      <button class="drawer-close" data-close="bagDrawer">×</button>
+    </div>
+
+    <div id="cartItems">
+      <p>Your bag is empty.</p>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <button class="mobile-close" id="mobileClose">×</button>
+
+    <a href="collection.html">Collection</a>
+    <a href="index.html#new">New Arrivals</a>
+    <a href="limited-edition.html">Limited Edition</a>
+
+    <a href="hoodies.html">Hoodies</a>
+    <a href="sweatshirts.html">Sweatshirts</a>
+    <a href="jackets.html">Jackets</a>
+    <a href="sweaters.html">Sweaters</a>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
