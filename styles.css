@@ -1880,3 +1880,158 @@ section {
     margin-bottom: 35px !important;
   }
 }
+/* =====================================================
+   KULTWEAR HOMEPAGE — FINAL 3 FIXES
+   ===================================================== */
+
+/* 1. MOBILE HEADER OVERLAP */
+@media (max-width: 900px) {
+
+  .site-header {
+    height: 68px !important;
+    padding: 0 5vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .logo {
+    display: block !important;
+    font-size: 20px !important;
+    white-space: nowrap !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 11px !important;
+    margin-left: auto !important;
+  }
+
+  .menu-btn {
+    display: block !important;
+    font-size: 22px !important;
+  }
+}
+
+
+/* 2. MOBILE HERO — NO OVERLAP / NO CUTTING */
+@media (max-width: 560px) {
+
+  .hero {
+    min-height: 690px !important;
+    height: auto !important;
+    padding: 90px 7vw 65px !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    position: relative !important;
+  }
+
+  .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .hero h1 {
+    font-size: 58px !important;
+    line-height: .86 !important;
+    letter-spacing: -.085em !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-sub {
+    max-width: 330px !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .primary-btn {
+    min-width: 185px !important;
+  }
+
+  .hero-mark {
+    right: -8vw !important;
+    bottom: 30% !important;
+    font-size: 60vw !important;
+    z-index: 1 !important;
+  }
+
+  .scroll-note {
+    left: 7vw !important;
+    right: auto !important;
+    bottom: 20px !important;
+    z-index: 5 !important;
+  }
+}
+
+
+/* 3. MOBILE — PROPER GAP BETWEEN SECTIONS */
+@media (max-width: 560px) {
+
+  .categories {
+    padding-top: 80px !important;
+    padding-bottom: 90px !important;
+  }
+
+  .categories .section-head {
+    margin-bottom: 48px !important;
+  }
+
+  .product-section {
+    padding-top: 80px !important;
+    padding-bottom: 90px !important;
+  }
+
+  .product-section .section-head {
+    margin-bottom: 42px !important;
+  }
+
+  .story {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+  }
+
+  .complete {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+  }
+
+  .prelaunch {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+  }
+
+  /* FOOTER LINKS — NOT STUCK TOGETHER */
+  .footer {
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .footer-top {
+    margin-bottom: 45px !important;
+  }
+
+  .footer-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    margin-bottom: 45px !important;
+  }
+
+  .footer-links a {
+    display: block !important;
+    padding-bottom: 18px !important;
+    border-bottom: 1px solid var(--line) !important;
+  }
+
+  .copyright {
+    margin-top: 40px !important;
+  }
+}
