@@ -3,148 +3,122 @@ const products = [
     id: 1,
     name: "Core Heavy Hoodie",
     cat: "Hoodies",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A heavyweight everyday hoodie built for winter layering, comfort and clean styling.",
+    material: "Heavyweight cotton-blend fleece",
+    fit: "Relaxed fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 2,
     name: "Kult Graphic Hoodie",
     cat: "Hoodies",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A graphic-led winter hoodie with a relaxed silhouette and bold KULTWEAR identity.",
+    material: "Heavyweight cotton-blend fleece",
+    fit: "Relaxed fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 3,
     name: "Essential Crew Sweat",
     cat: "Sweatshirts",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A clean everyday crew sweatshirt designed for effortless winter rotation.",
+    material: "Premium cotton fleece",
+    fit: "Regular fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 4,
     name: "Studio Graphic Sweat",
     cat: "Sweatshirts",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A statement graphic sweatshirt balancing everyday comfort with a stronger streetwear look.",
+    material: "Premium cotton fleece",
+    fit: "Relaxed fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 5,
     name: "Transit Puffer Jacket",
     cat: "Jackets",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A winter-ready puffer designed for warmth, movement and everyday city wear.",
+    material: "Insulated technical shell",
+    fit: "Regular fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 6,
     name: "Utility Winter Jacket",
     cat: "Jackets",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A structured winter layer combining practical utility details with a minimal silhouette.",
+    material: "Technical winter fabric",
+    fit: "Regular fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 7,
     name: "Heavy Knit Sweater",
     cat: "Sweaters",
-    tag: "NEW"
+    tag: "NEW",
+    description: "A heavyweight knit designed for warm layering and refined everyday winter styling.",
+    material: "Heavy knit blend",
+    fit: "Relaxed fit",
+    delivery: "Delivery details will be available before launch."
   },
   {
     id: 8,
     name: "KULT 001 Limited",
     cat: "Limited Edition",
-    tag: "LIMITED"
+    tag: "LIMITED",
+    description: "A limited KULTWEAR piece built around a distinctive identity and exclusive winter direction.",
+    material: "Premium winter fabric",
+    fit: "Relaxed fit",
+    delivery: "Limited edition delivery details will be available before launch."
   }
 ];
 
-
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
-
-
-/* PRODUCT CARD */
+function getProduct(id) {
+  return products.find(product => product.id === Number(id));
+}
 
 function productCard(product) {
   return `
-    <article class="product-card reveal">
-      <a href="product.html?id=${product.id}">
+    <a class="product-card" href="product.html?id=${product.id}">
+      <div class="product-image">
+        <span class="product-placeholder">KW</span>
+        <span class="product-tag">${product.tag}</span>
+      </div>
 
-        <div class="product-image">
-
-          <span class="product-tag">
-            ${product.tag}
-          </span>
-
+      <div class="product-info">
+        <div>
+          <span class="product-category">${product.cat} / ${product.tag}</span>
+          <h3>${product.name}</h3>
         </div>
 
-        <div class="product-info">
-
-          <h3>
-            ${product.name}
-          </h3>
-
-          <p>
-            ${product.cat} · COMING SOON
-          </p>
-
-        </div>
-
-      </a>
-    </article>
+        <span class="product-price">PRICE SOON</span>
+      </div>
+    </a>
   `;
 }
 
+function renderProducts(container, list) {
+  if (!container) return;
 
-/* RENDER PRODUCTS */
+  container.innerHTML = list.map(productCard).join("");
 
-function renderProducts(list, target) {
-
-  if (!target) return;
-
-  target.innerHTML = list
-    .map(productCard)
-    .join("");
-
-  revealElements();
-
+  container.querySelectorAll(".product-card").forEach(card => {
+    card.addEventListener("click", () => {
+      sessionStorage.setItem("kultwearTransition", "true");
+    });
+  });
 }
-
-
-/* HOMEPAGE NEW ARRIVALS */
-
-const newGrid = $("#newGrid");
-
-if (newGrid) {
-
-  renderProducts(
-    products.filter(product => product.tag === "NEW"),
-    newGrid
-  );
-
-}
-
-
-/* COLLECTION PAGE */
-
-const collectionGrid = $("#collectionGrid");
-
-if (collectionGrid) {
-
-  const params = new URLSearchParams(window.location.search);
-
-  const filter = params.get("filter");
-
-  let list = [...products];
-
-  if (filter === "new") {
-    list = products.filter(product => product.tag === "NEW");
-  }
-
-  renderProducts(list, collectionGrid);
-
-}
-
-
-/* CATEGORY PAGE */
 
 function getCategoryFromPage() {
-
-  const file = window.location.pathname
-    .split("/")
-    .pop()
-    .toLowerCase();
+  const page = window.location.pathname.split("/").pop().toLowerCase();
 
   const categories = {
     "hoodies.html": "Hoodies",
@@ -154,526 +128,477 @@ function getCategoryFromPage() {
     "limited-edition.html": "Limited Edition"
   };
 
-  return categories[file] || null;
+  return categories[page] || null;
 }
 
+function initCollection() {
+  const grid = document.getElementById("collectionGrid");
+  if (!grid) return;
 
-const categoryGrid = $("#categoryGrid");
+  const buttons = document.querySelectorAll(".filter-btn");
 
-if (categoryGrid) {
+  function applyFilter(filter) {
+    let filtered = products;
+
+    if (filter === "new") {
+      filtered = products.filter(product => product.tag === "NEW");
+    } else if (filter !== "all") {
+      filtered = products.filter(
+        product => product.cat.toLowerCase() === filter.toLowerCase()
+      );
+    }
+
+    renderProducts(grid, filtered);
+
+    buttons.forEach(button => {
+      button.classList.toggle(
+        "active",
+        button.dataset.filter === filter
+      );
+    });
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      applyFilter(button.dataset.filter);
+    });
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const initialFilter = params.get("filter") || "all";
+
+  applyFilter(initialFilter);
+}
+
+function initCategoryPage() {
+  const grid = document.getElementById("categoryGrid");
+  if (!grid) return;
 
   const category = getCategoryFromPage();
 
-  const list = products.filter(
+  if (!category) return;
+
+  const filtered = products.filter(
     product => product.cat === category
   );
 
-  renderProducts(list, categoryGrid);
-
+  renderProducts(grid, filtered);
 }
 
+function renderProductDetail() {
+  const container = document.getElementById("productDetail");
+  if (!container) return;
 
-/* FILTER BUTTONS */
-
-$$(".filter-btn").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    $$(".filter-btn").forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    const filter = button.dataset.filter;
-
-    let list = [...products];
-
-    if (filter !== "all") {
-
-      if (filter === "new") {
-        list = products.filter(
-          product => product.tag === "NEW"
-        );
-      } else {
-        list = products.filter(
-          product => product.cat === filter
-        );
-      }
-
-    }
-
-    if (collectionGrid) {
-      renderProducts(list, collectionGrid);
-    }
-
-  });
-
-});
-
-
-/* PRODUCT DETAIL PAGE */
-
-const productDetail = $("#productDetail");
-
-if (productDetail) {
-
-  const params = new URLSearchParams(
-    window.location.search
-  );
-
-  const id = Number(params.get("id"));
-
-  const product = products.find(
-    item => item.id === id
-  );
+  const params = new URLSearchParams(window.location.search);
+  const product = getProduct(params.get("id"));
 
   if (!product) {
-
-    productDetail.innerHTML = `
-      <div class="empty-state">
-        <span>404</span>
-        <h4>PRODUCT NOT FOUND</h4>
-        <p>
-          This KULTWEAR product does not exist.
-        </p>
+    container.innerHTML = `
+      <div class="product-not-found">
+        <p class="eyebrow">KULTWEAR</p>
+        <h1>PRODUCT NOT FOUND.</h1>
+        <a href="collection.html" class="primary-btn">BACK TO COLLECTION</a>
       </div>
     `;
+    return;
+  }
 
-  } else {
+  container.innerHTML = `
+    <div class="product-page">
 
-    productDetail.innerHTML = `
+      <div class="product-gallery">
 
-      <div class="product-detail-image">
-        <span>KW</span>
+        <div class="main-product-image">
+          <span class="gallery-mark">KW</span>
+          <span class="gallery-label">${product.cat}</span>
+        </div>
+
+        <div class="product-thumbnails">
+          <button class="product-thumb active">
+            <span>KW</span>
+          </button>
+
+          <button class="product-thumb">
+            <span>01</span>
+          </button>
+
+          <button class="product-thumb">
+            <span>02</span>
+          </button>
+
+          <button class="product-thumb">
+            <span>03</span>
+          </button>
+        </div>
+
       </div>
 
-      <div class="product-detail-info">
+      <div class="product-content">
 
-        <p class="eyebrow">
-          ${product.cat} / ${product.tag}
+        <div class="product-breadcrumb">
+          Home / ${product.cat} / ${product.name}
+        </div>
+
+        <div class="product-heading">
+          <span class="product-detail-category">
+            ${product.cat} / ${product.tag}
+          </span>
+
+          <h1>${product.name}</h1>
+
+          <div class="product-price-large">
+            PRICE SOON
+          </div>
+        </div>
+
+        <p class="product-description">
+          ${product.description}
         </p>
 
-        <h1>
-          ${product.name}
-        </h1>
+        <div class="product-specs">
 
-        <p class="product-price">
-          PRICE SOON
-        </p>
+          <div>
+            <span>FIT</span>
+            <strong>${product.fit}</strong>
+          </div>
 
-        <p class="size-label">
-          SELECT SIZE
-        </p>
+          <div>
+            <span>MATERIAL</span>
+            <strong>${product.material}</strong>
+          </div>
 
-        <div class="size-grid">
+        </div>
 
-          <button class="size-btn">S</button>
-          <button class="size-btn">M</button>
-          <button class="size-btn">L</button>
-          <button class="size-btn">XL</button>
-          <button class="size-btn">XXL</button>
+        <div class="size-section">
+
+          <div class="size-heading">
+            <span>SELECT SIZE</span>
+            <span id="selectedSize">SELECT</span>
+          </div>
+
+          <div class="size-grid">
+            <button class="size-btn" data-size="S">S</button>
+            <button class="size-btn" data-size="M">M</button>
+            <button class="size-btn" data-size="L">L</button>
+            <button class="size-btn" data-size="XL">XL</button>
+            <button class="size-btn" data-size="XXL">XXL</button>
+          </div>
 
         </div>
 
         <div class="product-actions">
 
-          <button
-            class="primary-btn full"
-            data-toast="Purchasing will be available when KULTWEAR launches."
-          >
-            ADD TO BAG <span>→</span>
+          <button class="product-action primary" id="addToBag">
+            ADD TO BAG
+            <span>→</span>
           </button>
 
-          <button
-            class="primary-btn full"
-            data-toast="Checkout will be available when KULTWEAR launches."
-          >
-            BUY NOW <span>→</span>
+          <button class="product-action secondary" id="buyNow">
+            BUY NOW
+            <span>→</span>
           </button>
 
         </div>
 
-        <div class="product-description">
+        <div class="product-benefits">
 
-          <h3>DESCRIPTION</h3>
+          <div>
+            <strong>01</strong>
+            <span>PREMIUM QUALITY</span>
+          </div>
 
-          <p>
-            A KULTWEAR winter essential designed around
-            clean everyday styling and a premium streetwear feel.
-          </p>
+          <div>
+            <strong>02</strong>
+            <span>WINTER READY</span>
+          </div>
 
-          <h3>MATERIAL</h3>
+          <div>
+            <strong>03</strong>
+            <span>EASY RETURNS</span>
+          </div>
 
-          <p>
-            Final fabric and material specifications
-            will be published before launch.
-          </p>
+        </div>
 
-          <h3>DELIVERY</h3>
+        <div class="product-information">
 
-          <p>
-            Delivery information will be available
-            when the store goes live.
-          </p>
+          <details open>
+            <summary>PRODUCT DETAILS</summary>
+            <p>
+              ${product.description}
+              Designed as part of the KULTWEAR Winter '26 collection.
+            </p>
+          </details>
 
-          <h3>RETURNS</h3>
+          <details>
+            <summary>MATERIAL & FIT</summary>
+            <p>
+              ${product.material}. ${product.fit}.
+            </p>
+          </details>
 
-          <p>
-            Final return and refund policy will be
-            published before launch.
-          </p>
+          <details>
+            <summary>DELIVERY & RETURNS</summary>
+            <p>
+              ${product.delivery}
+              Return and refund policy will be available before launch.
+            </p>
+          </details>
 
         </div>
 
       </div>
-    `;
 
+    </div>
+  `;
 
-    $$(".size-btn").forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        $$(".size-btn").forEach(btn => {
-          btn.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-      });
-
-    });
-
-  }
-
+  initProductInteractions();
 }
 
+function initProductInteractions() {
+  const sizeButtons = document.querySelectorAll(".size-btn");
+  const selectedSize = document.getElementById("selectedSize");
 
-/* SEARCH DRAWER */
+  sizeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      sizeButtons.forEach(btn => btn.classList.remove("selected"));
+      button.classList.add("selected");
 
-const overlay = $("#overlay");
-const searchDrawer = $("#searchDrawer");
-const accountDrawer = $("#accountDrawer");
-const cartDrawer = $("#cartDrawer");
-const mobileMenu = $("#mobileMenu");
+      if (selectedSize) {
+        selectedSize.textContent = button.dataset.size;
+      }
+    });
+  });
 
+  const addToBag = document.getElementById("addToBag");
+  const buyNow = document.getElementById("buyNow");
 
-function closeAll() {
+  if (addToBag) {
+    addToBag.addEventListener("click", () => {
+      const selected = document.querySelector(".size-btn.selected");
 
-  [searchDrawer, accountDrawer, cartDrawer]
-    .forEach(drawer => {
-
-      if (drawer) {
-        drawer.classList.remove("active");
+      if (!selected) {
+        showToast("Please select a size.");
+        return;
       }
 
+      showToast(`Added to bag — Size ${selected.dataset.size}`);
     });
-
-  if (mobileMenu) {
-    mobileMenu.classList.remove("active");
   }
 
-  if (overlay) {
-    overlay.classList.remove("active");
+  if (buyNow) {
+    buyNow.addEventListener("click", () => {
+      const selected = document.querySelector(".size-btn.selected");
+
+      if (!selected) {
+        showToast("Please select a size.");
+        return;
+      }
+
+      showToast("Checkout will be available before launch.");
+    });
   }
-
 }
-
-
-function openDrawer(drawer) {
-
-  closeAll();
-
-  if (!drawer) return;
-
-  drawer.classList.add("active");
-
-  if (overlay) {
-    overlay.classList.add("active");
-  }
-
-}
-
-
-/* OPEN SEARCH */
-
-$$("[data-open-search]").forEach(button => {
-
-  button.addEventListener("click", () => {
-    openDrawer(searchDrawer);
-  });
-
-});
-
-
-/* OPEN ACCOUNT */
-
-$$("[data-open-account]").forEach(button => {
-
-  button.addEventListener("click", () => {
-    openDrawer(accountDrawer);
-  });
-
-});
-
-
-/* OPEN CART */
-
-$$("[data-open-cart]").forEach(button => {
-
-  button.addEventListener("click", () => {
-    openDrawer(cartDrawer);
-  });
-
-});
-
-
-/* OPEN MOBILE MENU */
-
-$$("[data-open-menu]").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    closeAll();
-
-    if (mobileMenu) {
-      mobileMenu.classList.add("active");
-    }
-
-  });
-
-});
-
-
-/* CLOSE DRAWERS */
-
-$$("[data-close]").forEach(button => {
-
-  button.addEventListener("click", closeAll);
-
-});
-
-
-$$("[data-close-menu]").forEach(button => {
-
-  button.addEventListener("click", closeAll);
-
-});
-
-
-if (overlay) {
-  overlay.addEventListener("click", closeAll);
-}
-
-
-/* SEARCH */
-
-const searchInput = $("#searchInput");
-const searchResults = $("#searchResults");
-
-
-if (searchInput && searchResults) {
-
-  searchInput.addEventListener("input", () => {
-
-    const query = searchInput.value
-      .trim()
-      .toLowerCase();
-
-    if (!query) {
-
-      searchResults.innerHTML = "";
-
-      return;
-
-    }
-
-
-    const results = products.filter(product =>
-      product.name.toLowerCase().includes(query) ||
-      product.cat.toLowerCase().includes(query)
-    );
-
-
-    if (!results.length) {
-
-      searchResults.innerHTML = `
-        <div class="empty-state">
-          <h4>NO PRODUCTS FOUND</h4>
-          <p>
-            Try another search.
-          </p>
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    searchResults.innerHTML = results
-      .map(product => `
-        <a
-          href="product.html?id=${product.id}"
-          style="
-            display:block;
-            padding:15px 0;
-            border-bottom:1px solid rgba(244,241,235,.08);
-          "
-        >
-
-          <strong style="font-size:12px;">
-            ${product.name}
-          </strong>
-
-          <span
-            style="
-              display:block;
-              margin-top:5px;
-              color:rgba(244,241,235,.4);
-              font-size:10px;
-            "
-          >
-            ${product.cat}
-          </span>
-
-        </a>
-      `)
-      .join("");
-
-  });
-
-}
-
-
-/* PRE-LAUNCH FORM */
-
-const notifyForm = $("#notifyForm");
-const notifyEmail = $("#notifyEmail");
-const formMessage = $("#formMessage");
-
-
-if (notifyForm) {
-
-  notifyForm.addEventListener("submit", event => {
-
-    event.preventDefault();
-
-    if (!notifyEmail.value.trim()) return;
-
-    if (formMessage) {
-
-      formMessage.textContent =
-        "You're on the list. Launch updates will be connected before release.";
-
-    }
-
-    notifyForm.reset();
-
-  });
-
-}
-
-
-/* TOAST */
-
-let toastTimer;
-
 
 function showToast(message) {
-
-  const toast = $("#toast");
+  const toast = document.getElementById("toast");
 
   if (!toast) return;
 
   toast.textContent = message;
+  toast.classList.add("show");
 
-  toast.classList.add("active");
+  clearTimeout(window.kultwearToast);
 
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-
-    toast.classList.remove("active");
-
-  }, 3000);
-
+  window.kultwearToast = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
 }
 
+function initDrawers() {
+  const searchBtn = document.getElementById("searchBtn");
+  const accountBtn = document.getElementById("accountBtn");
+  const bagBtn = document.getElementById("bagBtn");
 
-$$("[data-toast]").forEach(button => {
+  const searchDrawer = document.getElementById("searchDrawer");
+  const accountDrawer = document.getElementById("accountDrawer");
+  const bagDrawer = document.getElementById("bagDrawer");
 
-  button.addEventListener("click", () => {
-
-    showToast(
-      button.dataset.toast
-    );
-
-  });
-
-});
-
-
-/* REVEAL ANIMATION */
-
-function revealElements() {
-
-  const elements = $$(".reveal");
-
-  if (!("IntersectionObserver" in window)) {
-
-    elements.forEach(element => {
-      element.classList.add("visible");
-    });
-
-    return;
-
+  function openDrawer(drawer) {
+    if (!drawer) return;
+    drawer.classList.add("open");
+    document.body.classList.add("drawer-open");
   }
 
+  function closeDrawer(drawer) {
+    if (!drawer) return;
+    drawer.classList.remove("open");
 
-  const observer =
-    new IntersectionObserver(
-      entries => {
+    if (
+      !document.querySelector(".drawer.open")
+    ) {
+      document.body.classList.remove("drawer-open");
+    }
+  }
 
-        entries.forEach(entry => {
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      openDrawer(searchDrawer);
+    });
+  }
 
-          if (entry.isIntersecting) {
+  if (accountBtn) {
+    accountBtn.addEventListener("click", () => {
+      openDrawer(accountDrawer);
+    });
+  }
 
-            entry.target.classList.add("visible");
+  if (bagBtn) {
+    bagBtn.addEventListener("click", () => {
+      openDrawer(bagDrawer);
+    });
+  }
 
-            observer.unobserve(entry.target);
+  document.querySelectorAll(".drawer-close").forEach(button => {
+    button.addEventListener("click", () => {
+      const drawer = document.getElementById(button.dataset.close);
+      closeDrawer(drawer);
+    });
+  });
+}
 
-          }
+function initMobileMenu() {
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileClose = document.getElementById("mobileClose");
 
-        });
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.add("open");
+      document.body.classList.add("menu-open");
+    });
+  }
 
-      },
-      {
-        threshold: 0.08
-      }
-    );
+  if (mobileClose && mobileMenu) {
+    mobileClose.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      document.body.classList.remove("menu-open");
+    });
+  }
 
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+      });
+    });
+  }
+}
 
-  elements.forEach(element => {
+function initSearch() {
+  const input = document.getElementById("searchInput");
+  const results = document.getElementById("searchResults");
 
-    if (!element.classList.contains("visible")) {
-      observer.observe(element);
+  if (!input || !results) return;
+
+  function searchProducts(value) {
+    const query = value.trim().toLowerCase();
+
+    if (!query) {
+      results.innerHTML = "";
+      return;
     }
 
-  });
+    const matches = products.filter(product =>
+      `${product.name} ${product.cat}`
+        .toLowerCase()
+        .includes(query)
+    );
 
-}
+    if (!matches.length) {
+      results.innerHTML = `
+        <p class="search-empty">No products found.</p>
+      `;
+      return;
+    }
 
-
-revealElements();
-
-
-/* ESC KEY */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key === "Escape") {
-    closeAll();
+    results.innerHTML = matches
+      .map(product => `
+        <a class="search-result" href="product.html?id=${product.id}">
+          <span>${product.name}</span>
+          <small>${product.cat}</small>
+        </a>
+      `)
+      .join("");
   }
 
+  input.addEventListener("input", event => {
+    searchProducts(event.target.value);
+  });
+}
+
+function initReveal() {
+  const elements = document.querySelectorAll(".reveal");
+
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  elements.forEach(element => observer.observe(element));
+}
+
+function initPrelaunchForm() {
+  const form = document.getElementById("prelaunchForm");
+
+  if (!form) return;
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const input = form.querySelector("input");
+
+    if (!input || !input.value.trim()) {
+      showToast("Enter your email first.");
+      return;
+    }
+
+    showToast("You're on the KULTWEAR list.");
+    form.reset();
+  });
+}
+
+function initHomepageNewArrivals() {
+  const grid = document.getElementById("newGrid");
+
+  if (!grid) return;
+
+  const newProducts = products.filter(
+    product => product.tag === "NEW"
+  );
+
+  renderProducts(grid, newProducts);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProductDetail();
+  initCollection();
+  initCategoryPage();
+  initHomepageNewArrivals();
+  initDrawers();
+  initMobileMenu();
+  initSearch();
+  initReveal();
+  initPrelaunchForm();
 });
