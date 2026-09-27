@@ -1,249 +1,525 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="KULTWEAR — Men's Winter Collection. Premium everyday streetwear, coming soon.">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>KULTWEAR — Winter '26</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="KULTWEAR — Men's Winter Collection. Premium everyday streetwear, coming soon.">
+
+<title>KULTWEAR — Winter '26</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <div class="announcement">KULTWEAR / WINTER '26 — COMING SOON</div>
+<div class="announcement">
+  KULTWEAR / WINTER '26 — COMING SOON
+</div>
 
-  <header class="site-header" id="top">
-    <a class="logo" href="#top" aria-label="KULTWEAR home">KULTWEAR</a>
+<header class="site-header" id="top">
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#collection">Collection</a>
-      <a href="#new">New Arrivals</a>
-      <a href="#story">Our Story</a>
-    </nav>
+  <a class="logo" href="index.html">KULTWEAR</a>
 
-    <div class="header-actions">
-      <button class="icon-btn" data-open-search aria-label="Search">⌕</button>
-      <button class="icon-btn" data-open-account aria-label="Account">○</button>
-      <button class="icon-btn cart-btn" data-open-cart aria-label="Cart">
-        Bag <span class="cart-count">0</span>
+  <nav class="desktop-nav">
+    <a href="collection.html">Collection</a>
+    <a href="collection.html?filter=new">New Arrivals</a>
+    <a href="limited-edition.html">Limited Edition</a>
+  </nav>
+
+  <div class="header-actions">
+
+    <button class="icon-btn" data-open-search aria-label="Search">
+      ⌕
+    </button>
+
+    <button class="icon-btn" data-open-account aria-label="Account">
+      ○
+    </button>
+
+    <button class="icon-btn cart-btn" data-open-cart aria-label="Cart">
+      Bag <span class="cart-count">0</span>
+    </button>
+
+    <button class="menu-btn" data-open-menu aria-label="Open menu">
+      ☰
+    </button>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-copy reveal">
+
+    <p class="eyebrow">
+      KULTWEAR MEN'S / WINTER '26
+    </p>
+
+    <h1>
+      BUILT FOR<br>
+      <span>THE EVERYDAY.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Premium-looking winter essentials. Designed for everyday wear. Coming soon.
+    </p>
+
+    <a class="primary-btn" href="collection.html">
+      SHOP WINTER '26 <span>→</span>
+    </a>
+
+  </div>
+
+  <div class="hero-mark">
+    KW
+  </div>
+
+  <div class="scroll-note">
+    SCROLL <span>↓</span>
+  </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section categories">
+
+  <div class="section-head reveal">
+
+    <div>
+      <p class="eyebrow">EXPLORE</p>
+      <h2>SHOP BY CATEGORY</h2>
+    </div>
+
+    <p class="muted">
+      Winter essentials, one collection.
+    </p>
+
+  </div>
+
+
+  <div class="category-grid">
+
+    <a class="category-card reveal" href="hoodies.html">
+      <span>01</span>
+      <strong>HOODIES</strong>
+      <em>→</em>
+    </a>
+
+    <a class="category-card reveal" href="sweatshirts.html">
+      <span>02</span>
+      <strong>SWEATSHIRTS</strong>
+      <em>→</em>
+    </a>
+
+    <a class="category-card reveal" href="jackets.html">
+      <span>03</span>
+      <strong>JACKETS</strong>
+      <em>→</em>
+    </a>
+
+    <a class="category-card reveal" href="sweaters.html">
+      <span>04</span>
+      <strong>SWEATERS</strong>
+      <em>→</em>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- NEW ARRIVALS -->
+
+<section class="section product-section" id="new">
+
+  <div class="section-head reveal">
+
+    <div>
+      <p class="eyebrow">THE FIRST DROP</p>
+      <h2>NEW ARRIVALS</h2>
+    </div>
+
+    <a class="text-btn" href="collection.html?filter=new">
+      VIEW ALL →
+    </a>
+
+  </div>
+
+  <div class="product-grid" id="newGrid"></div>
+
+</section>
+
+
+<!-- BRAND STORY -->
+
+<section class="story" id="story">
+
+  <div class="story-inner reveal">
+
+    <p class="eyebrow">
+      THE IDEA
+    </p>
+
+    <h2>
+      NOT LOUD.<br>
+      JUST <span>RECOGNIZABLE.</span>
+    </h2>
+
+    <p>
+      We are building KULTWEAR around one simple idea:
+      everyday winterwear should feel considered without
+      feeling out of reach.
+    </p>
+
+    <div class="story-line"></div>
+
+    <p class="story-small">
+      Minimal silhouettes. Graphic energy. No unnecessary noise.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- PRE-LAUNCH -->
+
+<section class="prelaunch">
+
+  <div class="prelaunch-inner reveal">
+
+    <p class="eyebrow">
+      WINTER '26
+    </p>
+
+    <h2>
+      THE DROP IS<br>
+      <span>COMING SOON.</span>
+    </h2>
+
+    <p>
+      Join the list. Be among the first to know when KULTWEAR goes live.
+    </p>
+
+    <form id="notifyForm" class="notify-form">
+
+      <input
+        type="email"
+        id="notifyEmail"
+        placeholder="Your email address"
+        required
+      >
+
+      <button class="primary-btn" type="submit">
+        NOTIFY ME <span>→</span>
       </button>
-      <button class="menu-btn" data-open-menu aria-label="Open menu">☰</button>
-    </div>
-  </header>
 
-  <main>
+    </form>
 
-    <section class="hero">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">KULTWEAR MEN'S / WINTER '26</p>
-        <h1>BUILT FOR<br><span>THE EVERYDAY.</span></h1>
-        <p class="hero-sub">
-          Premium-looking winter essentials. Designed for everyday wear. Coming soon.
-        </p>
-        <a class="primary-btn" href="#collection">
-          SHOP WINTER '26 <span>→</span>
-        </a>
-      </div>
+    <p class="form-message" id="formMessage"></p>
 
-      <div class="hero-mark" aria-hidden="true">KW</div>
-      <div class="scroll-note">SCROLL <span>↓</span></div>
-    </section>
+  </div>
 
-    <section class="section categories" id="collection">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">EXPLORE</p>
-          <h2>SHOP BY CATEGORY</h2>
-        </div>
-        <p class="muted">Winter essentials, one collection.</p>
-      </div>
+</section>
 
-      <div class="category-grid">
-        <button class="category-card reveal" data-category="Hoodies">
-          <span>01</span>
-          <strong>HOODIES</strong>
-          <em>→</em>
-        </button>
+</main>
 
-        <button class="category-card reveal" data-category="Sweatshirts">
-          <span>02</span>
-          <strong>SWEATSHIRTS</strong>
-          <em>→</em>
-        </button>
 
-        <button class="category-card reveal" data-category="Jackets">
-          <span>03</span>
-          <strong>JACKETS</strong>
-          <em>→</em>
-        </button>
+<!-- FOOTER -->
 
-        <button class="category-card reveal" data-category="Sweaters">
-          <span>04</span>
-          <strong>SWEATERS</strong>
-          <em>→</em>
-        </button>
-      </div>
-    </section>
+<footer class="footer">
 
-    <section class="section product-section" id="new">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">THE FIRST DROP</p>
-          <h2>NEW ARRIVALS</h2>
-        </div>
-        <button class="text-btn" data-show-all>VIEW ALL →</button>
-      </div>
+  <div class="footer-top">
 
-      <div class="product-grid" id="productGrid"></div>
-    </section>
+    <a class="logo" href="index.html">
+      KULTWEAR
+    </a>
 
-    <section class="story" id="story">
-      <div class="story-inner reveal">
-        <p class="eyebrow">THE IDEA</p>
-        <h2>NOT LOUD.<br>JUST <span>RECOGNIZABLE.</span></h2>
+    <p>
+      MEN'S WINTER '26
+    </p>
 
-        <p>
-          We are building KULTWEAR around one simple idea:
-          everyday winterwear should feel considered without feeling out of reach.
-        </p>
+  </div>
 
-        <div class="story-line"></div>
 
-        <p class="story-small">
-          Minimal silhouettes. Graphic energy. No unnecessary noise.
-        </p>
-      </div>
-    </section>
+  <div class="footer-links">
 
-    <section class="section product-section complete">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">COMING SOON</p>
-          <h2>COMPLETE WINTER COLLECTION</h2>
-        </div>
+    <a href="collection.html">
+      Collection
+    </a>
 
-        <div class="filters">
-          <button class="filter active" data-filter="All">All</button>
-          <button class="filter" data-filter="Hoodies">Hoodies</button>
-          <button class="filter" data-filter="Sweatshirts">Sweatshirts</button>
-          <button class="filter" data-filter="Jackets">Jackets</button>
-          <button class="filter" data-filter="Sweaters">Sweaters</button>
-          <button class="filter" data-filter="Limited Edition">Limited</button>
-        </div>
-      </div>
+    <a href="limited-edition.html">
+      Limited Edition
+    </a>
 
-      <div class="product-grid" id="collectionGrid"></div>
-    </section>
+    <a href="#story">
+      Our Story
+    </a>
 
-    <section class="prelaunch">
-      <div class="prelaunch-inner reveal">
-        <p class="eyebrow">WINTER '26</p>
-        <h2>THE DROP IS<br><span>COMING SOON.</span></h2>
+  </div>
 
-        <p>
-          Join the list. Be among the first to know when KULTWEAR goes live.
-        </p>
 
-        <form id="notifyForm" class="notify-form">
-          <input
-            type="email"
-            id="notifyEmail"
-            placeholder="Your email address"
-            aria-label="Email address"
-            required
-          >
-          <button class="primary-btn" type="submit">
-            NOTIFY ME <span>→</span>
-          </button>
-        </form>
+  <div class="footer-legal">
 
-        <p class="form-message" id="formMessage" role="status"></p>
-      </div>
-    </section>
+    <a href="#faq">
+      FAQ
+    </a>
 
-  </main>
+    <a href="#contact">
+      Contact
+    </a>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <a class="logo" href="#top">KULTWEAR</a>
-      <p>MEN'S WINTER '26</p>
-    </div>
+    <a href="#privacy">
+      Privacy Policy
+    </a>
 
-    <div class="footer-links">
-      <a href="#collection">Collection</a>
-      <a href="#story">Our Story</a>
-      <a href="#" data-open-account>Account</a>
-      <a href="#" data-open-cart>Cart</a>
-    </div>
+    <a href="#terms">
+      Terms & Conditions
+    </a>
 
-    <p class="copyright">© 2026 KULTWEAR. ALL RIGHTS RESERVED.</p>
-  </footer>
+    <a href="#shipping">
+      Shipping Policy
+    </a>
 
-  <div class="overlay" id="overlay"></div>
+    <a href="#returns">
+      Return & Refund Policy
+    </a>
 
-  <aside class="drawer" id="cartDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <h3>YOUR BAG</h3>
-      <button class="close-btn" data-close-drawer>×</button>
-    </div>
+  </div>
 
-    <div class="empty-state">
-      <span>00</span>
-      <h4>YOUR BAG IS EMPTY</h4>
-      <p>Products will be available when the KULTWEAR drop goes live.</p>
-    </div>
-  </aside>
 
-  <aside class="drawer account-drawer" id="accountDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <h3>ACCOUNT</h3>
-      <button class="close-btn" data-close-drawer>×</button>
-    </div>
+  <div class="footer-info" id="faq">
 
-    <div class="account-content">
-      <p class="eyebrow">KULTWEAR MEMBERS</p>
+    <h3>FAQ</h3>
 
-      <h4>PRICES & PURCHASES<br>UNLOCK AFTER LOGIN.</h4>
+    <p>
+      Product prices and purchasing will be available when
+      the KULTWEAR Winter '26 drop goes live.
+    </p>
 
-      <p>
-        Google + mobile/email login will be connected when the real authentication backend is added.
-      </p>
+  </div>
 
-      <button class="primary-btn full" id="loginPlaceholder">
-        LOGIN / REGISTER <span>→</span>
-      </button>
 
-      <small>This preview does not collect or store passwords.</small>
-    </div>
-  </aside>
+  <div class="footer-info" id="contact">
 
-  <aside class="drawer search-drawer" id="searchDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <h3>SEARCH</h3>
-      <button class="close-btn" data-close-drawer>×</button>
-    </div>
+    <h3>CONTACT</h3>
 
-    <div class="search-wrap">
-      <input id="searchInput" type="search" placeholder="Search KULTWEAR..." autofocus>
-      <span>⌕</span>
-    </div>
+    <p>
+      Contact details will be added before launch.
+    </p>
 
-    <div id="searchResults"></div>
-  </aside>
+  </div>
 
-  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <button class="close-btn" data-close-menu>×</button>
-    <a href="#collection">Collection</a>
-    <a href="#new">New Arrivals</a>
-    <a href="#story">Our Story</a>
-    <button data-open-account>Account</button>
-  </aside>
 
-  <div class="toast" id="toast"></div>
+  <div class="footer-info" id="privacy">
 
-  <script src="script.js"></script>
+    <h3>PRIVACY POLICY</h3>
+
+    <p>
+      The final privacy policy will be published before
+      collecting customer account or payment information.
+    </p>
+
+  </div>
+
+
+  <div class="footer-info" id="terms">
+
+    <h3>TERMS & CONDITIONS</h3>
+
+    <p>
+      Final terms will be published before the store
+      accepts orders.
+    </p>
+
+  </div>
+
+
+  <div class="footer-info" id="shipping">
+
+    <h3>SHIPPING POLICY</h3>
+
+    <p>
+      Shipping timelines and service areas will be
+      published before launch.
+    </p>
+
+  </div>
+
+
+  <div class="footer-info" id="returns">
+
+    <h3>RETURN & REFUND POLICY</h3>
+
+    <p>
+      Return and refund rules will be published before launch.
+    </p>
+
+  </div>
+
+
+  <p class="copyright">
+    © 2026 KULTWEAR. ALL RIGHTS RESERVED.
+  </p>
+
+</footer>
+
+
+<!-- CART DRAWER -->
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="drawer" id="cartDrawer">
+
+  <div class="drawer-head">
+
+    <h3>YOUR BAG</h3>
+
+    <button class="close-btn" data-close>
+      ×
+    </button>
+
+  </div>
+
+  <div class="empty-state">
+
+    <span>00</span>
+
+    <h4>
+      YOUR BAG IS EMPTY
+    </h4>
+
+    <p>
+      Products will be available when the
+      KULTWEAR drop goes live.
+    </p>
+
+  </div>
+
+</aside>
+
+
+<!-- ACCOUNT DRAWER -->
+
+<aside class="drawer" id="accountDrawer">
+
+  <div class="drawer-head">
+
+    <h3>ACCOUNT</h3>
+
+    <button class="close-btn" data-close>
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="account-content">
+
+    <p class="eyebrow">
+      KULTWEAR MEMBERS
+    </p>
+
+    <h4>
+      PRICES & PURCHASES<br>
+      UNLOCK AFTER LOGIN.
+    </h4>
+
+    <p>
+      Google + mobile/email login will be connected
+      when the real authentication backend is added.
+    </p>
+
+    <button
+      class="primary-btn full"
+      data-toast="Authentication will be connected before launch."
+    >
+      LOGIN / REGISTER <span>→</span>
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- SEARCH DRAWER -->
+
+<aside class="drawer search-drawer" id="searchDrawer">
+
+  <div class="drawer-head">
+
+    <h3>SEARCH</h3>
+
+    <button class="close-btn" data-close>
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="search-wrap">
+
+    <input
+      id="searchInput"
+      type="search"
+      placeholder="Search KULTWEAR..."
+    >
+
+    <span>⌕</span>
+
+  </div>
+
+
+  <div id="searchResults"></div>
+
+</aside>
+
+
+<!-- MOBILE MENU -->
+
+<aside class="mobile-menu" id="mobileMenu">
+
+  <button class="close-btn" data-close-menu>
+    ×
+  </button>
+
+  <a href="collection.html">
+    Collection
+  </a>
+
+  <a href="collection.html?filter=new">
+    New Arrivals
+  </a>
+
+  <a href="limited-edition.html">
+    Limited Edition
+  </a>
+
+  <button data-open-account>
+    Account
+  </button>
+
+</aside>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
